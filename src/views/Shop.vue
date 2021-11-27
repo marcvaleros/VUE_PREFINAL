@@ -1,5 +1,5 @@
 <template>
-  <div v-if="overallPrice != 0">
+  <div v-if="overallPrice != 0 && isPurchased == 0">
    <div>Total Price: ${{overallPrice2}}.00</div> 
   <div :key="index" v-for="(cart_item,index) in cart">
                  <ShopItemCard :item="cart_item.item"/>
@@ -25,7 +25,6 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -60,6 +59,8 @@ export default {
       coupon: "",
       checkout: "",
       quantity: 0,
+      isPurchased: 0,
+      allPrice: this.overallPrice,
       cart: this.$store.state.cart,
       items: this.$store.getters.ItemCart,
       count:  this.$store.getters.count
@@ -76,9 +77,9 @@ export default {
   methods: {
     verifyPayment(){
       if(parseInt(this.checkout,10) >= this.overallPrice2){
-        console.log(parseInt(this.checkout,10));
-        console.log(this.overallPrice2);
-        console.log("success");
+        alert("Purchase Success");
+        this.checkout = "";
+        this.isPurchased = 1;
       }else{
         alert("Checkout Fail");
       }

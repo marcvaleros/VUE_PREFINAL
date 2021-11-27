@@ -39,7 +39,7 @@ export default {
 
 .item-card{
   max-width: 500px;
-  /* margin: 10px auto; */
+  margin: auto 10px;
   border-radius: 8px ;
   background-color:rgb(70, 63, 175);
 }
