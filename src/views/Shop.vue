@@ -1,30 +1,31 @@
 <template>
   <div v-if="overallPrice != 0 && isPurchased == 0">
-  <div>Total Price: ${{overallPrice2}}.00</div> 
-    <div :key="index" v-for="(cart_item,index) in cart">
+  
+  <div class="checkout-style">
+    <div class="big-text">Total Price: ${{overallPrice2}}.00</div> 
+    <button class="btn btn-primary" @click="checkCoupon">Submit Coupon</button>
+      <input v-model="coupon" placeholder="Enter Coupun Here"/>
+      <button  type="button" class="btn btn-primary big-text" data-toggle="modal" data-target="#exampleModal" @click="verifyPayment">Checkout</button>
+    <input v-model="checkout" placeholder="Enter Money"/>
+  </div>
 
-                  <ShopItemCard :item="cart_item.item"/>
+    <div class="card-container" :key="index" v-for="(cart_item,index) in cart">
+      <ShopItemCard :item="cart_item.item"/>
 
-                  <p>{{setQuantity(cart_item.quantity)}}</p>
+      <div class="details">
+        <p>{{setQuantity(cart_item.quantity)}}</p>
+        <div>Quantity:{{quantity}} x ${{cart_item.item.price}}.00</div>
+        <div>Item Price ${{getTotalItemPrice(quantity,cart_item.item.price)}}.00</div>
+      </div>
 
-                  <div>Quantity:{{quantity}} x ${{cart_item.item.price}}.00</div>
-
-                  <div>Item Price ${{getTotalItemPrice(quantity,cart_item.item.price)}}.00</div>
-
-                  <button class= "btn btn-primary px-5 m-1" @click="decrementQuantity">-</button>
-
-                  <input v-model="quantity" placeholder="quantity"/>
-
-                  <button class="btn btn-primary px-5 m-1"  @click="incrementQuantity">+</button>
+      <div class="inputQuantity">
+        <button class= "btn btn-primary px-5 m-1" @click="decrementQuantity">-</button>
+        <input v-model="quantity" placeholder="quantity"/>
+        <button class="btn btn-primary px-5 m-1"  @click="incrementQuantity">+</button>
+      </div>
 
     </div>
 
-  <div>
-            <input v-model="coupon" placeholder="Enter Coupun Here"/>
-              <button  @click="checkCoupon">Submit Coupon</button>
-              <input v-model="checkout" placeholder="Enter Money"/>
-            <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" @click="verifyPayment">Checkout</button>
-  </div>
 
   </div>
 
@@ -117,11 +118,43 @@ export default {
 
 <style>
 
-.my-card{
+
+.btn{
+  margin: 10px !important;
+}
+
+.inputQuantity{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.card-container{
+  display: flex;
+  margin: 50px;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px ;
+}
+.checkout-style{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 8px;
   padding: 10px;
-  margin: 10px auto;
-  max-width: 500px;
-  color: white;
-  background-color: rgb(98, 20, 172);
+  margin: 50px;
+  background-color: #ff4800;
+  justify-content: space-evenly;
+}
+
+.big-text{
+  color: #ffffff;
+  font-size: 30px;
+  background-color: #ff4800;
+}
+.i-text{
+  color: #ffffff;
+  font-size: 14px;
 }
 </style>

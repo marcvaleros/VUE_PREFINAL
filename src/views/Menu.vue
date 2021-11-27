@@ -31,10 +31,9 @@ export default {
 }
 
 .card-section{
-  
   position: relative;
   background-color: rgb(230, 229, 235);
-  height: calc(100vh - 50px);
+  height: calc(100vh - 56px);
   padding: 50px;
   display: flex;
   flex-direction: row;
