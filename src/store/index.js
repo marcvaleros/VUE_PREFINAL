@@ -35,7 +35,7 @@ export default createStore({
         var newQuantity = boolprod.quantity + cart_item.quantity;
         if(newQuantity <= boolprod.item.quantity){
           boolprod.quantity += cart_item.quantity;
-        }else{
+        }else if(newQuantity > boolprod.item.quantity){
           alert("Not Added. Insufficient Stock.");
         }
         return;

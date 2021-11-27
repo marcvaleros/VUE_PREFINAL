@@ -27,8 +27,6 @@
 </template>
 
 <script>
-// import ItemDetails from '.src/components/ItemDetails.vue';
-// import Input from '.src/components/Input.vue';
 
 export default {
   name: 'ItemPage',
