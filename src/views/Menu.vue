@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style>
+body{
+  background-color: rgb(230, 229, 235) !important; 
+}
 * {
   margin: 0;
   padding: 0;
