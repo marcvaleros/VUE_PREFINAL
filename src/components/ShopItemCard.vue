@@ -4,8 +4,8 @@
     <div class="my-card text-left">
       <img class="card-img-to img-style" :src="item.img" alt="" />
       <div class="card-body">
-        <h4 class="card-title ">{{ item.name }}</h4>
-        <p class="card-text">Price: 
+        <h4 class="card-title n-text">{{ item.name }}</h4>
+        <p class="card-text n-text">Price: 
         <strong class="n-text">{{ item.price }}</strong></p>
         <button class="btn btn-danger" @click="RemoveItem(item)">Remove Item</button><router-link style="text-decoration: none; color: inherit" :to="{ name: 'ItemPage', params: { id: item.id } }"><div class="btn btn-success">Details</div></router-link>
       </div>
@@ -36,7 +36,7 @@ export default {
 }
 
 .n-text{
-  color: #ffff;
+  color: rgb(64, 0, 138);
   font-size: 24px;
 }
 
