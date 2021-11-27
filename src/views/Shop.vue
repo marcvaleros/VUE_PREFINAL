@@ -76,9 +76,7 @@ export default {
   methods: {
     verifyPayment(){
       if(parseInt(this.checkout,10) >= this.overallPrice2){
-        console.log(parseInt(this.checkout,10));
-        console.log(this.overallPrice2);
-        console.log("success");
+        alert("success");
       }else{
         alert("Checkout Fail");
       }
