@@ -1,6 +1,5 @@
 <template>
   <div v-if="overallPrice != 0">
-   <!-- <div>Total Price: ${{overallPrice}}.00</div>  -->
    <div>Total Price: ${{overallPrice2}}.00</div> 
   <div :key="index" v-for="(cart_item,index) in cart">
                  <ShopItemCard :item="cart_item.item"/>
@@ -19,7 +18,7 @@
             <input v-model="coupon" placeholder="Enter Coupun Here"/>
             <button  @click="checkCoupon">Submit Coupon</button>
             <input v-model="checkout" placeholder="Enter Money"/>
-            <button  @click="checkOut">Checkout</button>
+            <button  @click="verifyPayment">Checkout</button>
   </div>
 
   </div>
@@ -37,7 +36,7 @@ export default {
   data() {
     return {
       coupon: "",
-      checkout: "",
+      checkout: 0,
       quantity: 0,
       cart: this.$store.state.cart,
       items: this.$store.getters.ItemCart,
@@ -53,6 +52,11 @@ export default {
       }
   },
   methods: {
+    verifyPayment(){
+      if(this.checkout){
+        
+      }
+    },
     getTotalItemPrice(x,y) {
       return x * y;
     },
