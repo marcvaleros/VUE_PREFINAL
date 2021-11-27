@@ -32,9 +32,9 @@ export default {
   color: #ffffff;
 }
 .shop{
-  color:aliceblue;
+  color:rgb(255, 255, 255);
 }
 .navbar-custom {
-    background-color:  #080216;
+    background-color:  #5526ff;
 }
 </style>

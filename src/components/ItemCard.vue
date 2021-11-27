@@ -1,14 +1,12 @@
 
 <template>
-    <div class="col-10 mt-3" v-if="item.quantity != 0">
-      <div class="card h-100 text-left">
-        <img class="card-img-top w-100 img-style" :src ="item.img" alt="">
+    <div v-if="item.quantity != 0">
+      <div class="my-card card text-left">
+        <img class="card-img-to img-style" :src ="item.img" alt="">
         <div class="card-body">
-          <h4 class="card-title">{{item.name}}</h4>
-          <p class="card-text">Price: <strong>{{item.price}}</strong></p>
-
-        <router-link style="text-decoration: none; color: inherit;" :to="{name: 'ItemPage', params:{id:item.id}}"><div class="link px-4 pb-3"> Details</div></router-link>
-        
+            <h4 class="card-title">{{item.name}}</h4>
+            <p class="card-text">Price: $<strong>{{item.price}}.00</strong></p>
+           <router-link style="text-decoration: none; color: inherit;" :to="{name: 'ItemPage', params:{id:item.id}}"><div class="link px-4 pb-3"> Details</div></router-link>
         </div>
       </div>
     </div>
@@ -25,29 +23,42 @@ export default {
 </script>
 
 <style>
-.img-style{
-  width: 250px;
-  height:250px;
+body{
+    background-color: rgb(21, 18, 58) !important;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: row !important;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.70rem !important;
+    color: #4e1dff !important;
+    padding: 10px !important;
+    margin: 10px !important;
+    flex-grow: 100 !important;
 }
 
-.item-card{
-  border-radius: 8px ;
-  background-color:rgb(70, 63, 175);
+.img-style{
+  width: 500px;
+  height:500px;
 }
 
 .link{
   background-color:rgb(93, 82, 245);
-  padding: 10px;
+  /* padding: 10px; */
+  /* margin: 10px auto; */
+  /* color: rgb(240, 122, 26); */
   border-radius: 10px;
-  margin: 10px auto;
-  cursor: pointer;
-  color: rgb(255, 255, 255);
   text-decoration: none;
+  cursor: pointer;
 }
 
 
 .link:hover{
-  color: white;
+  color: rgb(255, 255, 255);
   background-color:rgb(71, 62, 201);
 }
 

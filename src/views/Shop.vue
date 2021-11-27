@@ -1,41 +1,28 @@
 <template>
   <div v-if="overallPrice != 0 && isPurchased == 0">
-   <div>Total Price: ${{overallPrice2}}.00</div> 
-  <div :key="index" v-for="(cart_item,index) in cart">
-                 <ShopItemCard :item="cart_item.item"/>
-                 {{setQuantity(cart_item.quantity)}}
-                <div>Quantity:{{quantity}} x ${{cart_item.item.price}}.00</div>
-                <div>Item Price ${{getTotalItemPrice(quantity,cart_item.item.price)}}.00</div>
-                <br>
-                <button class= "btn btn-primary px-5 m-1" @click="decrementQuantity">-</button>
-                <input v-model="quantity" placeholder="quantity"/>
-                <button class="btn btn-primary px-5 m-1"  @click="incrementQuantity">+</button>
-                <br>
+  <div>Total Price: ${{overallPrice2}}.00</div> 
+    <div :key="index" v-for="(cart_item,index) in cart">
 
-  </div>
+                  <ShopItemCard :item="cart_item.item"/>
+
+                  <p>{{setQuantity(cart_item.quantity)}}</p>
+
+                  <div>Quantity:{{quantity}} x ${{cart_item.item.price}}.00</div>
+
+                  <div>Item Price ${{getTotalItemPrice(quantity,cart_item.item.price)}}.00</div>
+
+                  <button class= "btn btn-primary px-5 m-1" @click="decrementQuantity">-</button>
+
+                  <input v-model="quantity" placeholder="quantity"/>
+
+                  <button class="btn btn-primary px-5 m-1"  @click="incrementQuantity">+</button>
+
+    </div>
 
   <div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
             <input v-model="coupon" placeholder="Enter Coupun Here"/>
-            <button  @click="checkCoupon">Submit Coupon</button>
-            <input v-model="checkout" placeholder="Enter Money"/>
+              <button  @click="checkCoupon">Submit Coupon</button>
+              <input v-model="checkout" placeholder="Enter Money"/>
             <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" @click="verifyPayment">Checkout</button>
   </div>
 
@@ -88,9 +75,7 @@ export default {
       return x * y;
     },
       incrementQuantity(){
-      // if(this.quantity < this.filteredItem.quantity ){
         this.quantity++;
-      // }
     },
     decrementQuantity(){
       if(this.quantity > 0){
@@ -106,7 +91,6 @@ export default {
        let savings;
        let percent;
 
-       console.log(code +""+ total);
         if(total != 0){
           if(code == "menu50"){
               percent = 50/100;
