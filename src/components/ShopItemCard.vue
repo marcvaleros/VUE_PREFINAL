@@ -1,20 +1,17 @@
 
 <template>
-  <div class="col-10 mt-3" v-if="item.quantity != 0">
-    <div class="card h-100 text-left">
-      <img class="card-img-top w-100 img-style" :src="item.img" alt="" />
+  <div v-if="item.quantity != 0">
+    <div class="my-card text-left">
+      <img class="card-img-to img-style" :src="item.img" alt="" />
       <div class="card-body">
-        <h4 class="card-title">{{ item.name }}</h4>
-        <p class="card-text">
-          Price: <strong>{{ item.price }}</strong>
-        </p>
-        <button @click="RemoveItem(item)">Remove Item</button>
-        <router-link style="text-decoration: none; color: inherit"
-          :to="{ name: 'ItemPage', params: { id: item.id } }"
-          ><div class="link px-4 pb-3">Details</div></router-link>
+        <h4 class="card-title ">{{ item.name }}</h4>
+        <p class="card-text">Price: 
+        <strong class="n-text">{{ item.price }}</strong></p>
+        <button class="btn btn-danger" @click="RemoveItem(item)">Remove Item</button><router-link style="text-decoration: none; color: inherit" :to="{ name: 'ItemPage', params: { id: item.id } }"><div class="btn btn-success">Details</div></router-link>
       </div>
     </div>
   </div>
+
 </template> 
 
 <script>
@@ -38,25 +35,25 @@ export default {
   height: 250px;
 }
 
-.item-card {
-  max-width: 500px;
-  margin: auto 10px;
-  border-radius: 8px;
-  background-color: rgb(70, 63, 175);
+.n-text{
+  color: #ffff;
+  font-size: 24px;
 }
 
-.link {
-  background-color: rgb(93, 82, 245);
-  padding: 10px;
-  border-radius: 10px;
-  margin: 10px auto;
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-  text-decoration: none;
+.my-card {
+    position: relative;
+    display: flex;
+    flex-direction: row !important;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 0.70rem !important;
+    color: hsl(0, 0%, 100%) !important;
+    padding: 10px !important;
+    margin: 10px !important;
+    /* flex-grow: 100 !important; */
 }
 
-.link:hover {
-  color: white;
-  background-color: rgb(71, 62, 201);
-}
+
 </style>
