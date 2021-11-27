@@ -7,21 +7,43 @@
                 <div>Quantity:{{quantity}} x ${{cart_item.item.price}}.00</div>
                 <div>Item Price ${{getTotalItemPrice(quantity,cart_item.item.price)}}.00</div>
                 <br>
-                <button class= "btn btn-primary px-2 m-1" @click="decrementQuantity">-</button>
+                <button class= "btn btn-primary px-5 m-1" @click="decrementQuantity">-</button>
                 <input v-model="quantity" placeholder="quantity"/>
-                <button class="btn btn-primary px-2 m-1"  @click="incrementQuantity">+</button>
+                <button class="btn btn-primary px-5 m-1"  @click="incrementQuantity">+</button>
                 <br>
 
   </div>
 
   <div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
             <input v-model="coupon" placeholder="Enter Coupun Here"/>
             <button  @click="checkCoupon">Submit Coupon</button>
             <input v-model="checkout" placeholder="Enter Money"/>
-            <button  @click="verifyPayment">Checkout</button>
+            <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" @click="verifyPayment">Checkout</button>
   </div>
 
   </div>
+
+
+
 </template>
 
 <script>
@@ -36,7 +58,7 @@ export default {
   data() {
     return {
       coupon: "",
-      checkout: 0,
+      checkout: "",
       quantity: 0,
       cart: this.$store.state.cart,
       items: this.$store.getters.ItemCart,
@@ -53,8 +75,12 @@ export default {
   },
   methods: {
     verifyPayment(){
-      if(this.checkout){
-        
+      if(parseInt(this.checkout,10) >= this.overallPrice2){
+        console.log(parseInt(this.checkout,10));
+        console.log(this.overallPrice);
+        console.log("success");
+      }else{
+        alert("Checkout Fail");
       }
     },
     getTotalItemPrice(x,y) {
